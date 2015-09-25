@@ -1,0 +1,284 @@
+* { box-sizing: border-box; } 
+
+
+.screenshot.loading .loading-graphic {
+  height: 40px;  
+  font-size: 40px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.screenshot.loading .loading-graphic .dot,
+.screenshot.loading .loading-graphic .letter-c,
+.screenshot.loading .loading-graphic .letter-o,
+.screenshot.loading .loading-graphic .letter-d,
+.screenshot.loading .loading-graphic .letter-a {
+  opacity: 0;
+  animation: blinky 5s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+.screenshot.loading .loading-graphic .letter-c { animation-name: blinky1; }
+.screenshot.loading .loading-graphic .letter-o { animation-name: blinky2; }
+.screenshot.loading .loading-graphic .letter-d { animation-name: blinky3; }
+.screenshot.loading .loading-graphic .letter-a { animation-name: blinky4; }
+  
+/* this loops through drawing and erasing itself along the way */
+@keyframes blinky {
+  0%   { 
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  10%  {
+    opacity: 1;
+    transform: translateX(80px);
+  }
+  20%  {
+    transform: translate(0);;
+  }
+  90%   {
+    opacity: 1;
+  }
+  95%   { opacity: 0; }
+}
+
+
+@keyframes blinky1 {
+  20%  { opacity: 0; }
+  30%  { opacity: 1; }
+  90%   { opacity: 1; }
+  95%   { opacity: 0; }
+}
+
+@keyframes blinky2 {
+  30%  { opacity: 0; }
+  40%  { opacity: 1; }
+  90%   { opacity: 1; }
+  95%   { opacity: 0; }
+}
+
+@keyframes blinky3 {
+  40%  { opacity: 0; }
+  50%  { opacity: 1; }
+  90%   { opacity: 1; }
+  95%   { opacity: 0; }
+}
+
+@keyframes blinky4 {
+  50%  { opacity: 0; }
+  60%  { opacity: 1; }
+  90%   { opacity: 1; }
+  95%   { opacity: 0; }
+}
+
+.screenshot {
+  position: relative;
+  border: 1px solid red;
+  overflow: hidden;
+  padding: 20px;
+  background-color: white;
+  margin: 10px 50px 50px 10px;
+
+}
+.screenshot:before {
+  position: absolute;
+  left: -40px;
+  counter-increment: shot;
+  content: counter(shot) ": ";
+}
+
+
+.screenshot.small.codex {
+  width: 375px;
+  height: 667px;
+}
+
+.nav  {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  font-size: 2em;
+}
+
+.nav .info {
+  position: absolute;
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+.nav .logo {
+  padding-right: 10px;
+  border-right: 1px solid black;
+}
+
+.nav .project,
+.nav .current {
+  font-size: .6em;
+}
+
+.nav .current {
+  color: rgba(255,0,0,0.7);
+}
+
+.nav .item {
+  flex: 1 1 100px;
+  height: 13px;
+}
+
+
+.leaf img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.column {
+  position: absolute;
+  height: 80%;
+  overflow: hidden;
+}
+
+.screenshot {
+  display: inline-block;
+}
+
+
+/* red */
+.screenshot     .nav .item {
+  background-color: rgba(255,0,0,0.4);
+}
+.screenshot.one .nav .item:nth-child(3),
+.screenshot.two .nav .item:nth-child(4) {
+  background-color: rgba(255,0,0,0.7);
+}
+.screenshot.one .nav .item:nth-child(3) {
+  flex-basis: 170px;
+}
+.screenshot.two .nav .item:nth-child(4) {
+  flex-basis: 220px;
+}
+/* pink | church */
+
+.codex[data-current=church] .nav .item {
+  background-color: rgba(255,71,218,0.6);
+}
+
+[data-current=church].codex.screenshot { border-color: rgba(255,71,218,1); }
+[data-current=church].codex .nav .current { color: rgba(255,71,218,1); }
+
+[data-current=church].screenshot.one.codex .nav .item:nth-child(3),
+[data-current=church].screenshot.two.codex .nav .item:nth-child(4) {
+  background-color: rgba(255,71,218,1);
+}
+
+[data-url="/menu"].screenshot.three.codex .leaf {
+  display: inline-flex;
+  flex-flow: column nowrap;
+  padding-top: 70px;
+}
+
+[data-url="/menu"].screenshot.three.codex .bucket {
+  position: absolute;
+  background-color: rgba(255,0,0,0.7);
+  padding: 10px;
+  opacity: 1;
+  transition: transform 0.5s ease-in-out, opacity 0.5s linear;
+}
+
+[data-url="/menu"].screenshot.three.codex .bucket a {
+  color: #eee;
+}
+
+[data-url="/menu"].screenshot.three.codex p {
+  margin: 5px 0;
+}
+[data-url="/menu"].screenshot.three.codex p.headline {
+  font-family: "Oswald", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.8em;
+}
+
+[data-url="/menu"].screenshot.three.codex [data-current=east_west] {
+  background-color: rgba(251, 125, 32, 1);
+  transform: translate(10px, 80px);
+}
+
+[data-url="/menu"].screenshot.three.codex [data-current=rights] {
+  background-color: rgba(0, 162, 81, 1);
+  transform: translate(20px, 160px);
+}
+
+[data-url="/menu"].screenshot.three.codex [data-current=info_war] {
+  background-color: rgba(46, 95, 210, 1);
+  transform: translate(30px, 240px);
+}
+
+[data-url="/menu"].screenshot.three.codex [data-current=church] {
+  background-color: rgba(255,71,218, 1);
+  transform: translate(40px, 320px);
+}
+
+
+
+.kremlin {
+  color: rgba(255,0,0,0.7);
+}
+.headine.kremlin {
+  font-size: 4em;
+}
+
+body.kremlin [data-url="/menu"].codex .bucket[data-current=kremlin],
+body.east_west [data-url="/menu"].codex .bucket[data-current=east_west],
+body.rights [data-url="/menu"].codex .bucket[data-current=rights],
+body.info_war [data-url="/menu"].codex .bucket[data-current=info_war],
+body.church [data-url="/menu"].codex .bucket[data-current=church] {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+body.kremlin [data-url="/menu"].codex .bucket:not([data-current=kremlin]),
+body.east_west [data-url="/menu"].codex .bucket:not([data-current=east_west]),
+body.rights [data-url="/menu"].codex .bucket:not([data-current=rights]),
+body.info_war [data-url="/menu"].codex .bucket:not([data-current=info_war]),
+body.church [data-url="/menu"].codex .bucket:not([data-current=church]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/*
+.screenshot.two .nav  {
+  height: 100px;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgba(255, 255, 255, 0)),
+    color-stop(0.75, rgba(166, 166, 166, 0.5)),
+    color-stop(1, rgba(0,0,0,1))
+  );
+}
+*/
+
+.screenshot.two .current {
+  /* text-shadow: 2px 2px 3px rgba(255,255,255,0.5); */
+  /* text-shadow: 2px 2px 2px rgba(0,0,0,0.5); */
+  text-shadow:
+    3px 3px 5px rgba(255,255,255,0.8),
+    2px 2px 2px rgba(0,0,0,0.5);
+}
+.screenshot.two .column {
+  padding-top: 200px;
+}
+
