@@ -1,80 +1,22 @@
 * { box-sizing: border-box; } 
 
+body {
+  display: inline-block;
+  width: 100%;
+  counter-reset: shot;
+}
 
-.screenshot.loading .loading-graphic {
-  height: 40px;  
-  font-size: 40px;
+.label:before {
+  counter-increment: shot;
+  content: counter(shot) ": ";
+
+  position: absolute;
+  width: 440px;
+  left: 0; right: 0;
+  margin: 20px auto;
+
+  font-size: 30px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  line-height: 1;
-  text-align: center;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.screenshot.loading .loading-graphic .dot,
-.screenshot.loading .loading-graphic .letter-c,
-.screenshot.loading .loading-graphic .letter-o,
-.screenshot.loading .loading-graphic .letter-d,
-.screenshot.loading .loading-graphic .letter-a {
-  opacity: 0;
-  animation: blinky 5s ease-in-out;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
-}
-
-.screenshot.loading .loading-graphic .letter-c { animation-name: blinky1; }
-.screenshot.loading .loading-graphic .letter-o { animation-name: blinky2; }
-.screenshot.loading .loading-graphic .letter-d { animation-name: blinky3; }
-.screenshot.loading .loading-graphic .letter-a { animation-name: blinky4; }
-  
-/* this loops through drawing and erasing itself along the way */
-@keyframes blinky {
-  0%   { 
-    opacity: 0;
-    transform: translateX(80px);
-  }
-  10%  {
-    opacity: 1;
-    transform: translateX(80px);
-  }
-  20%  {
-    transform: translate(0);;
-  }
-  90%   {
-    opacity: 1;
-  }
-  95%   { opacity: 0; }
-}
-
-
-@keyframes blinky1 {
-  20%  { opacity: 0; }
-  30%  { opacity: 1; }
-  90%   { opacity: 1; }
-  95%   { opacity: 0; }
-}
-
-@keyframes blinky2 {
-  30%  { opacity: 0; }
-  40%  { opacity: 1; }
-  90%   { opacity: 1; }
-  95%   { opacity: 0; }
-}
-
-@keyframes blinky3 {
-  40%  { opacity: 0; }
-  50%  { opacity: 1; }
-  90%   { opacity: 1; }
-  95%   { opacity: 0; }
-}
-
-@keyframes blinky4 {
-  50%  { opacity: 0; }
-  60%  { opacity: 1; }
-  90%   { opacity: 1; }
-  95%   { opacity: 0; }
 }
 
 .screenshot {
@@ -83,15 +25,10 @@
   overflow: hidden;
   padding: 20px;
   background-color: white;
-  margin: 10px 50px 50px 10px;
+  margin: 10px auto;
+  left: 0; right:0;
+}
 
-}
-.screenshot:before {
-  position: absolute;
-  left: -40px;
-  counter-increment: shot;
-  content: counter(shot) ": ";
-}
 
 
 .screenshot.small.codex {
@@ -106,13 +43,14 @@
   top: 0;
   left: 0;
   font-size: 2em;
+  color: #333;
 }
 
 .nav .info {
   position: absolute;
   width: 100%;
-  margin-top: 5px;
-  padding: 10px;
+  margin: 10px;
+  margin-top: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
 }
@@ -122,12 +60,17 @@
   border-right: 1px solid black;
 }
 
+.nav a,
+.nav a:visited {
+  color: #333;
+}
+
 .nav .project,
 .nav .current {
   font-size: .6em;
 }
 
-.nav .current {
+.nav a.current {
   color: rgba(255,0,0,0.7);
 }
 
@@ -150,15 +93,14 @@
   overflow: hidden;
 }
 
-.screenshot {
-  display: inline-block;
-}
 
 
 /* red */
 .screenshot     .nav .item {
   background-color: rgba(255,0,0,0.4);
 }
+
+.screenshot .nav .item:hover,
 .screenshot.one .nav .item:nth-child(3),
 .screenshot.two .nav .item:nth-child(4) {
   background-color: rgba(255,0,0,0.7);
@@ -169,17 +111,19 @@
 .screenshot.two .nav .item:nth-child(4) {
   flex-basis: 220px;
 }
+
+
 /* pink | church */
 
 .codex[data-current=church] .nav .item {
   background-color: rgba(255,71,218,0.6);
 }
 
-[data-current=church].codex.screenshot { border-color: rgba(255,71,218,1); }
 [data-current=church].codex .nav .current { color: rgba(255,71,218,1); }
 
-[data-current=church].screenshot.one.codex .nav .item:nth-child(3),
-[data-current=church].screenshot.two.codex .nav .item:nth-child(4) {
+[data-current=church].screenshot .nav .item:hover,
+[data-current=church].screenshot .nav .item:nth-child(3),
+[data-current=church].screenshot .nav .item:nth-child(4) {
   background-color: rgba(255,71,218,1);
 }
 
@@ -194,7 +138,7 @@
   background-color: rgba(255,0,0,0.7);
   padding: 10px;
   opacity: 1;
-  transition: transform 0.5s ease-in-out, opacity 0.5s linear;
+  transition: transform 0.3s ease-in-out, opacity 0.3s linear;
 }
 
 [data-url="/menu"].screenshot.three.codex .bucket a {
@@ -280,5 +224,109 @@ body.church [data-url="/menu"].codex .bucket:not([data-current=church]) {
 }
 .screenshot.two .column {
   padding-top: 200px;
+}
+
+
+
+.screenshot.loading .loading-graphic {
+  height: 40px;
+  font-size: 45px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.screenshot.loading .loading-graphic .tag {
+  font-size: 0.45em;
+  color: green;
+}
+
+.screenshot.loading .loading-graphic .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: black;
+  margin-right: 0.4em;
+}
+
+.screenshot.loading .loading-graphic .letter {
+  margin-left: -0.2em;
+}
+
+
+.screenshot.loading .loading-graphic .dot,
+.screenshot.loading .loading-graphic .letter,
+.screenshot.loading .loading-graphic .tag {
+  opacity: 0;
+  animation: dot 5s linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+.screenshot.loading .loading-graphic .letter.c { animation-name: blinky1; }
+.screenshot.loading .loading-graphic .letter.o { animation-name: blinky2; }
+.screenshot.loading .loading-graphic .letter.d { animation-name: blinky3; }
+.screenshot.loading .loading-graphic .letter.a { animation-name: blinky4; }
+
+.screenshot.loading .loading-graphic .tag      { animation-name: blinky5; }
+
+/* this loops through drawing and erasing itself along the way */
+@keyframes dot {
+  0%   { 
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  10%  {
+    opacity: 1;
+    transform: translateX(80px);
+  }
+  20%  {
+    transform: translate(0);;
+  }
+  90%   {
+    opacity: 1;
+  }
+  95%   { opacity: 0; }
+}
+
+
+@keyframes blinky1 {
+  20%  { opacity: 0; }
+  25%  { opacity: 1; }
+  90%  { opacity: 1; }
+  95%  { opacity: 0; }
+}
+
+@keyframes blinky2 {
+  25%  { opacity: 0; }
+  30%  { opacity: 1; }
+  90%  { opacity: 1; }
+  95%  { opacity: 0; }
+}
+
+@keyframes blinky3 {
+  30%  { opacity: 0; }
+  35%  { opacity: 1; }
+  90%  { opacity: 1; }
+  95%  { opacity: 0; }
+}
+
+@keyframes blinky4 {
+  35%  { opacity: 0; }
+  40%  { opacity: 1; }
+  90%  { opacity: 1; }
+  95%  { opacity: 0; }
+}
+
+@keyframes blinky5 {
+  45%  { opacity: 0; }
+  50%  { opacity: 1; }
+  90%  { opacity: 1; }
+  95%  { opacity: 0; }
 }
 
