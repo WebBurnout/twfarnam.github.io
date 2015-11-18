@@ -1,0 +1,23 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  font-family: arial;
+}
+
+.small { font-size: 15px; }
+.medium { font-size: 16px; }
+.large { font-size: 18px; }
+.giant { font-size: 24px; }
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after {
+  clear: both;
+}
+
+

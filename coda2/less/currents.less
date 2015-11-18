@@ -1,0 +1,280 @@
+@green: #46c664;
+@transition: all 0.3s;
+
+* {
+  box-sizing: border-box;
+}
+
+body.small { font-size: 15px; }
+body.medium { font-size: 16px; }
+body.large { font-size: 18px; }
+body.giant { font-size: 24px; }
+
+
+.current {
+  position: relative;
+  margin: 20px 30px 20px 30px;
+}
+
+
+.current h2 {
+  flex: 0 0 auto;
+  max-width: 100%;
+  font-size: 3em;
+  text-transform: uppercase;
+  color: #f2f2f2;
+  font-weight: bold;
+  margin: 0px;
+  cursor: default;
+  transition: @transition;
+}
+
+.current h2 small {
+  font-size: .7em;
+}
+
+body.small  h2 { font-size: 2em; }
+body.medium h2 { font-size: 3em; }
+body.large  h2 { font-size: 4em; }
+body.giant  h2 { font-size: 4.5em; }
+
+
+.current:hover h2 {
+  color: @green;
+}
+
+
+.current .line {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-left: 8%;
+  position: relative;
+}
+
+
+.current .line .story {
+  position: relative;
+  flex: 0 0 25%;
+  max-width: 280px;
+  padding: 1.25em 1em 1.5em 0px;
+}
+
+.current .line .story a {
+  display: block;
+  padding: 1.1em 0.8em;
+}
+
+.current .line .story a:hover {
+  background: #333;
+  position: relative;
+}
+
+// arrow
+.current .line .story a:hover::before {
+  display: block;
+  content: '';
+  position: absolute;
+  z-index: 10;
+  bottom: 100%;
+  left: 8px;
+  border: solid transparent;
+  height: 0px;
+  width: 0px;
+  pointer-events: none;
+  border-bottom-color: #333;
+  border-width: 7px;
+  border-bottom-width: 10px;
+}
+
+.story a:hover .title, .story a:hover .subtitle, .story a:hover time {
+  color: #fff;
+}
+
+
+// the line
+.current .line .story:after {
+  display: block;
+  content: '';
+
+  position: absolute;
+  left: 8px;
+  top: 0;
+  height: .8em;
+  width: 100%;
+  background: #ccc;
+  transition: @transition;
+}
+
+.current:hover .line .story:after {
+  background: #333;
+}
+
+.current .line .story:first-child:after {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+}
+
+.current .line .story:last-child:after {
+  width: .8em;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+
+// the dot
+.current .line .story:before {
+  display: block;
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 8px;
+  z-index: 5;
+
+  width: .8em;
+  height: .8em;
+
+  background: #3c3c3b;
+  border-radius: 50%;
+
+  transition: @transition;
+}
+
+.current:hover .line .story:before {
+  background: @green;
+}
+
+.current .line .story:hover:before {
+  transform: scale(1.4);
+}
+
+.current .line .story img {
+  width: 100%;
+}
+
+.current .line .story figure {
+  margin: 0;
+  height: 0;
+  transition: height 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.current .line:hover .story figure {
+  height: 150px;
+}
+
+
+
+// for mobile, we get rid of titles completely
+
+body.medium .story *,
+body.small .story * {
+  display: none;
+}
+
+// headers go black
+body.medium h2,
+body.small h2 {
+  color: black;
+}
+
+// when larger the line is shifted up to cover the header a bit
+body.large .line,
+body.giant .line {
+  top: -1.2em;
+}
+
+
+// text inside the .story
+a {
+  text-decoration: none;
+}
+.subtitle {
+  text-transform: capitalize;
+  color: #585857;
+  margin-bottom: 5px;
+}
+.title {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #3c3c3b;
+  margin-bottom: 5px;
+}
+time {
+  text-transform: capitalize;
+  color: #585857;
+  margin-bottom: 5px;
+}
+.category {
+  color: @green;
+  text-transform: uppercase;
+}
+
+
+
+
+.current .header {
+  display: flex;
+  max-width: 100%;
+}
+
+.currents-help {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.currents-help .icon {
+  overflow: hidden;
+  color: #cecece;
+  font-weight: bold;
+
+  width: 1.5em;
+  height: 1.5em;
+
+  border: 1px solid #cecece;
+  border-radius: 50%;
+  cursor: pointer;
+
+  line-height: 1.5em;
+  opacity: 1;
+  transition: opacity .25s;
+}
+
+.currents-help:hover .icon {
+  height: 0px;
+  opacity: 0;
+  transition: opacity 0s;
+}
+
+.currents-help  p {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  z-index: 5;
+
+  font-weight: normal;
+  color: #fff;
+  margin: 0px;
+
+  border: 4px solid #cecece;
+  background: @green;
+  border-radius: 50%;
+
+  padding: 0px 25px;
+  padding-top: 20px;
+
+  transform-origin: 0 0;
+
+  transition: transform .25s ease-in-out;
+
+  opacity: 0;
+  transform: scale(0) translate(-50%, -50%);
+}
+
+.currents-help:hover p {
+  opacity: 1;
+  transform: scale(1) translate(-50%, -50%);
+}
+
+

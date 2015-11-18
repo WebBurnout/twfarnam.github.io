@@ -1,0 +1,430 @@
+#currents {
+  width: 100%;
+}
+.currents-row {
+  margin-bottom: 20px;
+}
+.currents-line {
+  list-style: none;
+  margin: 0px 0px 0px 150px;
+  padding: 0px;
+}
+.currents-header .cont {
+  display: inline-block;
+  position: relative;
+}
+.currents-header h2 {
+  text-transform: uppercase;
+  color: #f2f2f2;
+  font-weight: bold;
+  margin: 0px;
+  font-size: 4.37em;
+}
+.currents-header h2 small {
+  font-size: .7em;
+}
+.currents-help {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #cecece;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-transition: all .25s, margin 1ms;
+          transition: all .25s, margin 1ms;
+}
+.currents-help span {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow: hidden;
+  color: #cecece;
+  font-weight: bold;
+  opacity: 1;
+  -webkit-transition: opacity .25s;
+          transition: opacity .25s;
+}
+.currents-help p {
+  font-size: 0px;
+  height: 0px;
+  overflow: hidden;
+  font-weight: normal;
+  color: #fff;
+  display: block;
+  margin: 0px;
+  -webkit-transition: 0s;
+          transition: 0s;
+}
+.currents-help:hover {
+  border-width: 4px;
+  background: #46c664;
+  padding: 0px 25px;
+}
+.currents-help:hover span {
+  height: 0px;
+  opacity: 0;
+  -webkit-transition: opacity 0s;
+          transition: opacity 0s;
+}
+.currents-help:hover p {
+  height: auto;
+  -webkit-transition: .25s;
+          transition: .25s;
+}
+.currents-item {
+  display: block;
+  float: left;
+}
+.currents-item figure {
+  display: none;
+  margin: 10px 0px 15px 0px;
+}
+.currents-item figure img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+.currents-item .subtitle,
+.currents-item time {
+  font-size: .9em;
+}
+.currents-item .subtitle,
+.currents-item .title,
+.currents-item time,
+.currents-item .category {
+  display: block;
+}
+.currents-item .subtitle {
+  text-transform: capitalize;
+  color: #585857;
+  margin-bottom: 5px;
+}
+.currents-item .title {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #3c3c3b;
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+.currents-item time {
+  text-transform: capitalize;
+  color: #585857;
+  margin-bottom: 5px;
+}
+.currents-item .category {
+  color: #46c664;
+  text-transform: uppercase;
+  font-size: 0.79em;
+}
+.currents-item > a {
+  display: block;
+  text-decoration: none;
+  text-align: left;
+}
+.currents-item hr {
+  display: block;
+  width: 100%;
+  background: #d9d9d8;
+  margin: 0px 0px 15px 0px;
+  border-width: 0px;
+  position: relative;
+}
+.currents-item hr::before {
+  display: block;
+  background: #3c3c3b;
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+}
+.currents-item:first-child hr::before {
+  left: -1px;
+}
+.currents-item:last-child hr::before {
+  right: -1px;
+}
+.currents-item:last-child:hover hr::before {
+  left: auto;
+}
+.currents-texts {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+}
+.currents-row:hover .currents-header h2 {
+  color: #46c664;
+}
+.currents-row:hover .currents-item hr {
+  background: #000;
+}
+.currents-row:hover .currents-item hr::before {
+  background: #46c664;
+}
+.currents-row:hover .currents-item figure {
+  display: block;
+}
+.small .currents-row:hover .currents-item figure {
+  display: none;
+}
+.small .currents-line {
+  margin-left: 2px;
+}
+.small .currents-item {
+  width: 110px;
+}
+.small .currents-item hr {
+  margin-bottom: 0px;
+  height: 11px;
+}
+.small .currents-item hr::before {
+  width: 11px;
+  height: 11px;
+}
+.small .currents-item:hover hr::before {
+  width: 20px;
+  height: 20px;
+  top: -4.5px;
+  left: -4.5px;
+}
+.small .currents-item:first-child hr {
+  border-top-left-radius: 5.5px;
+  border-bottom-left-radius: 5.5px;
+}
+.small .currents-item:first-child:hover hr::before {
+  left: -5.5px;
+}
+.small .currents-item:last-child hr {
+  width: 11px;
+  border-top-right-radius: 5.5px;
+  border-bottom-right-radius: 5.5px;
+}
+.small .currents-item:last-child:hover hr::before {
+  right: -5.5px;
+}
+.small .currents-texts {
+  display: none;
+}
+.small .currents-help {
+  display: none
+  /*
+    @size: 25px;
+    margin-right: -1.7*@size;
+    width: @size;
+    height: @size;
+    margin-top: @size/2;
+
+    @width: 250px;
+    @margin: 20px;
+    &:hover {
+      width: @width;
+      height: @width;
+      top: -@width/2;
+      right: -@width/2;
+    }
+    p {
+      margin-top: -@width/2+@margin;
+    }
+    span {
+      font-size: 0.7*@size;
+      line-height: @size;
+    }
+    &:hover {
+      span {
+        line-height: @width;
+      }
+      p {
+        @fontSize: 16px;
+        margin-top: @margin;
+        line-height: 1.2*@fontSize;
+        font-size: @fontSize;
+      }
+    }
+    */
+}
+.medium .currents-item {
+  width: 155px;
+}
+.medium .currents-item hr {
+  height: 22px;
+}
+.medium .currents-item hr::before {
+  width: 22px;
+  height: 22px;
+}
+.medium .currents-item:hover hr::before {
+  width: 29.7px;
+  height: 29.7px;
+  top: -3.85px;
+  left: -3.85px;
+}
+.medium .currents-item:first-child hr {
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
+}
+.medium .currents-item:first-child:hover hr::before {
+  left: -4.85px;
+}
+.medium .currents-item:last-child hr {
+  width: 22px;
+  border-top-right-radius: 11px;
+  border-bottom-right-radius: 11px;
+}
+.medium .currents-item:last-child:hover hr::before {
+  right: -4.85px;
+}
+.medium .currents-texts {
+  padding-right: 15px;
+}
+.medium .currents-help {
+  margin-right: -59.5px;
+  width: 35px;
+  height: 35px;
+  margin-top: 17.5px;
+}
+.medium .currents-help:hover {
+  width: 330px;
+  height: 330px;
+  top: -165px;
+  right: -165px;
+}
+.medium .currents-help p {
+  margin-top: -135px;
+}
+.medium .currents-help span {
+  font-size: 24.5px;
+  line-height: 35px;
+}
+.medium .currents-help:hover span {
+  line-height: 330px;
+}
+.medium .currents-help:hover p {
+  margin-top: 30px;
+  line-height: 24px;
+  font-size: 20px;
+}
+.large .currents-item {
+  width: 200px;
+}
+.large .currents-item hr {
+  height: 25px;
+}
+.large .currents-item hr::before {
+  width: 25px;
+  height: 25px;
+}
+.large .currents-item:hover hr::before {
+  width: 33.75px;
+  height: 33.75px;
+  top: -4.375px;
+  left: -4.375px;
+}
+.large .currents-item:first-child hr {
+  border-top-left-radius: 12.5px;
+  border-bottom-left-radius: 12.5px;
+}
+.large .currents-item:first-child:hover hr::before {
+  left: -5.375px;
+}
+.large .currents-item:last-child hr {
+  width: 25px;
+  border-top-right-radius: 12.5px;
+  border-bottom-right-radius: 12.5px;
+}
+.large .currents-item:last-child:hover hr::before {
+  right: -5.375px;
+}
+.large .currents-texts {
+  padding-right: 20px;
+}
+.large .currents-help {
+  margin-right: -63.75px;
+  width: 37.5px;
+  height: 37.5px;
+  margin-top: 18.75px;
+}
+.large .currents-help:hover {
+  width: 350px;
+  height: 350px;
+  top: -175px;
+  right: -175px;
+}
+.large .currents-help p {
+  margin-top: -145px;
+}
+.large .currents-help span {
+  font-size: 26.25px;
+  line-height: 37.5px;
+}
+.large .currents-help:hover span {
+  line-height: 350px;
+}
+.large .currents-help:hover p {
+  margin-top: 30px;
+  line-height: 26.4px;
+  font-size: 22px;
+}
+.giant .currents-item {
+  width: 245px;
+}
+.giant .currents-item hr {
+  height: 27px;
+}
+.giant .currents-item hr::before {
+  width: 27px;
+  height: 27px;
+}
+.giant .currents-item:hover hr::before {
+  width: 36.45px;
+  height: 36.45px;
+  top: -4.725px;
+  left: -4.725px;
+}
+.giant .currents-item:first-child hr {
+  border-top-left-radius: 13.5px;
+  border-bottom-left-radius: 13.5px;
+}
+.giant .currents-item:first-child:hover hr::before {
+  left: -5.725px;
+}
+.giant .currents-item:last-child hr {
+  width: 27px;
+  border-top-right-radius: 13.5px;
+  border-bottom-right-radius: 13.5px;
+}
+.giant .currents-item:last-child:hover hr::before {
+  right: -5.725px;
+}
+.giant .currents-texts {
+  padding-right: 25px;
+}
+.giant .currents-help {
+  margin-right: -68px;
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+}
+.giant .currents-help:hover {
+  width: 350px;
+  height: 350px;
+  top: -175px;
+  right: -175px;
+}
+.giant .currents-help p {
+  margin-top: -145px;
+}
+.giant .currents-help span {
+  font-size: 28px;
+  line-height: 40px;
+}
+.giant .currents-help:hover span {
+  line-height: 350px;
+}
+.giant .currents-help:hover p {
+  margin-top: 30px;
+  line-height: 28.8px;
+  font-size: 24px;
+}

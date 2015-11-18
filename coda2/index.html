@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Coda</title>
+    <link href="css/general.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet/less" type="text/css" href="less/currents.less" />
+    <script src="js/less.js" type="text/javascript"></script>
+
+  <body>
+
+    <div class="current">
+
+      <div class="header">
+        <h2>kremlin influence</h2>
+        <div class="currents-help">
+          <div class=icon>?</div>
+          <p>In <br />this current we <br />bring you stories <br />about politics of <br />homophobia in the Former <br />Soviet Union and examine <br />the role Moscow played in <br />turning sexual orientation <br />into a matter of <br />political ideology</p>
+        </div>
+      </div>
+
+      <div class="line">
+
+        <div class="story">
+          <a href="javascript:;">
+            <div class="currents-texts">
+              <figure><img src="man.jpg" /></figure>
+              <div class="title">marching boots in grozny</div>
+              <time datetime="">10 november 2014</time>
+              <div class="category">dispatch</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="story">
+          <a href="javascript:;">
+            <div class="currents-texts">
+              <figure><img src="man.jpg" /></figure>
+              <span class="subtitle">episode 17</span>
+              <div class="title">ruslan’s kidnapping</div>
+              <time datetime="">2 december 2015</time>
+              <div class="category">hotspot</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="story">
+          <a href="javascript:;">
+            <div class="currents-texts">
+              <figure><img src="man.jpg" /></figure>
+              <div class="title">gazprom's pipeline bid</div>
+              <time datetime="">22 november 2014</time>
+              <div class="category">forensics</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="story">
+          <a href="javascript:;">
+            <div class="currents-texts">
+              <figure><img src="man.jpg" /></figure>
+              <div class="title">gazprom's pipeline bid</div>
+              <div class="title">ukraine in the second world war</div>
+              <time datetime="">17 november 2014</time>
+              <div class="category">investigation</div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="current">
+
+      <div class="header">
+        <h2>rights abuse <small>and</small> violence</h2>
+        <div class="currents-help">
+          <div class=icon>?</div>
+          <p>In <br />this current we <br />bring you stories <br />about politics of <br />homophobia in the Former <br />Soviet Union and examine <br />the role Moscow played in <br />turning sexual orientation <br />into a matter of <br />political ideology</p>
+        </div>
+      </div>
+
+
+      <div class="line">
+
+        <div class="story">
+          <a href="javascript:;">
+            <div class="currents-texts">
+              <figure><img src="man.jpg" /></figure>
+              <div class="title">the miners of Donetsk</div>
+              <div class="category">dispatch</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="story">
+          <a href="javascript:;">
+            <div class="currents-texts">
+              <figure><img src="man.jpg" /></figure>
+              <div class="title">moscow's mercenaries</div>
+              <div class="category">investigation</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="story">
+          <a href="javascript:;">
+            <div class="currents-texts">
+              <figure><img src="man.jpg" /></figure>
+              <div class="subtitle">episode 7</div>
+              <div class="title">election day</div>
+              <div class="category">across the line</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="story">
+          <a href="javascript:;">
+            <div class="currents-texts">
+              <figure><img src="man.jpg" /></figure>
+              <div class="title">ruslan's kidnapping</div>
+              <div class="category">hotspot</div>
+            </div>
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function () {
+
+        var breakpoints = [
+          {size: 400, name: 'small'},
+          {size: 800, name: 'medium'},
+          {size: 1200, name: 'large'},
+          {name: 'giant'}
+        ];
+        var className = '';
+
+        var resize = function() {
+          var size = Math.min($(window).width(), $(window).height());
+          $.each(breakpoints, function (i, b) {
+            if (size <= b.size || typeof b.size === 'undefined')
+            {
+              className = b.name;
+              return false;
+            }
+          });
+          console.log(className);
+          $('body').removeClass('small medium large giant').addClass(className);
+        }
+        $(window).on('resize',resize);
+        resize();
+
+      });
+    </script>
+
+
+  </body>
+</html>
